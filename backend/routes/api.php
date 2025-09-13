@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\FooterController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MenuController;
 use Illuminate\Http\Request;
 
 Route::get('/use', function (Request $request) {
@@ -17,3 +19,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 Route::apiResource('article', ArticleController::class);
 Route::apiResource('user', UserController::class);
 Route::post('/tokens/create', [AuthController::class, 'createToken']);
+
+Route::get('/menu', [MenuController::class, 'index']);
+Route::get('/footer', [FooterController::class, 'index']);
