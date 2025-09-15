@@ -1,4 +1,4 @@
-import { articleType, menuType, userType } from "./definitions";
+import { articleType, InfoType, menuType, userType } from "./definitions";
 
 export async function getUser(): Promise<userType[]> {
     try {
@@ -18,7 +18,7 @@ export async function getUser(): Promise<userType[]> {
     }
 }
 
-export async function getArticle(id: number): Promise<articleType[]> {
+export async function getArticle(id: string = ""): Promise<articleType[]> {
     try {
         const response = await fetch(`http://127.0.0.1:8000/api/article/${id}`, {
             headers: {
@@ -36,7 +36,7 @@ export async function getArticle(id: number): Promise<articleType[]> {
     }
 }
 
-export async function getMenu(): Promise<menuType[]> {
+export async function getMenu(): Promise<menuType> {
     try {
         const response = await fetch(`http://127.0.0.1:8000/api/menu`, {
             headers: {
@@ -54,9 +54,9 @@ export async function getMenu(): Promise<menuType[]> {
     }
 }
 
-export async function getFooter() {
+export async function getInfo(): Promise<InfoType[]> {
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/footer", {
+        const response = await fetch("http://127.0.0.1:8000/api/info", {
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",

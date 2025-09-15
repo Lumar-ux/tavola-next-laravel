@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\FooterController;
+use App\Http\Controllers\InfoController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -21,4 +21,4 @@ Route::apiResource('user', UserController::class);
 Route::post('/tokens/create', [AuthController::class, 'createToken']);
 
 Route::get('/menu', [MenuController::class, 'index']);
-Route::get('/footer', [FooterController::class, 'index']);
+Route::get('/info', [InfoController::class, 'index']);

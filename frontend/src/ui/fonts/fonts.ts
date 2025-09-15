@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+
 export const HelveticaLTStd = localFont({
     src: [
         {
@@ -17,4 +18,5 @@ export const HelveticaLTStd = localFont({
             style: "normal",
         },
     ],
+    display: "swap",
 });

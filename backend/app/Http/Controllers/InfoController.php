@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class FooterController extends Controller
+class InfoController extends Controller
 {
     function index(){
-        $footer = config('footer.list');
+        $footer = config('info');
         return response()->json($footer);
     }
 }

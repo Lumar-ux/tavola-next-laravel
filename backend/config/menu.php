@@ -27,4 +27,24 @@ return [
             'url'   => '/contact'
         ],
     ],
+    'bottomList' => [
+        [
+            'id' => 1,
+            'label' => 'Contact',
+            'value' => 'Contact',
+            'url'   => '/contact'
+        ],
+        [
+            'id' => 2,
+            'label' => 'Restaurant',
+            'value' => 'Restaurant',
+            'url'   => '/restaurant'
+        ],
+        [
+            'id' => 3,
+            'label' => 'Accessibilité',
+            'value' => 'Accessibilité',
+            'url'   => '#'
+        ],
+    ],
 ];

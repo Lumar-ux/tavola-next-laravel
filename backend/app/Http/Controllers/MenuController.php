@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class MenuController extends Controller
 {
     function index(){
-        $menus = config('menu.topList');
+        $menus = config('menu');
         return response()->json($menus);
     }
 }

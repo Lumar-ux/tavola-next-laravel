@@ -43,14 +43,12 @@ class User extends Authenticatable
 
     public static function getAllUserNames()
     {
-        return DB::table('users')
-            ->select('id', 'name')
+        return User::select('id', 'name')
             ->get();
     }
     public static function getUserNamesById($id)
     {
-        return DB::table('users')
-            ->select('id', 'name')
+        return User::select('id', 'name')
             ->where('id', $id)
             ->get();
     }

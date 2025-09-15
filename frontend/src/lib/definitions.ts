@@ -4,11 +4,16 @@ export type userType = {
     name: string;
 };
 
+export type NavItem = {
+  id: number;
+  label: string;
+  value: string;
+  url: string;
+};
+
 export type menuType = {
-    id: number;
-    label: number;
-    value: string;
-    url: string;
+    topList: NavItem[];
+    bottomList: NavItem[];
 };
 
 export type articleType = {
@@ -16,4 +21,30 @@ export type articleType = {
     title: string;
     body: string;
     status: "draft" | "published" | "archived";
+    updated_at: string;
 };
+
+export type CardProps = {
+    title: string;
+    body: string;
+    dateUpdate: string;
+};
+
+export type InfoType = {
+    localisation: string;
+    address: string;
+    openHours: {
+        label: string;
+        weekDays: {
+            days: string;
+            hours: string;
+        }
+        weekend: {
+            days: string;
+            hours: string;
+        }
+    };
+    phone: string;
+};
+
+

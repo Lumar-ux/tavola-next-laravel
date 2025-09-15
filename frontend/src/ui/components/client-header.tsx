@@ -1,7 +1,7 @@
+import { menuType } from "@/lib/definitions";
 import HeaderClient from "@/ui/components/header";
-import { getMenu } from "@/lib/data";
 
-export default async function Header() {
-    const menu = await getMenu();
-    return <HeaderClient data={menu} />;
+
+export default async function Header({ listMenu }: { listMenu: menuType }) {
+    return <HeaderClient data={listMenu} />;
 }

@@ -17,6 +17,10 @@ class Article extends Model
     ];
     protected $guarded = ['created_at', 'updated_at','slug','id','category_id','author_id'];
 
+    protected $casts = [
+        'updated_at' => 'datetime:d/m/Y',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -24,15 +28,14 @@ class Article extends Model
 
     public static function getAllArticle()
     {
-        return DB::table('articles')
-            ->select('id', 'title', 'body', 'status')
+        return Article::select('id', 'title', 'body', 'status', 'updated_at')
+            ->orderBy('id')
             ->get()
             ->toArray();
     }
     public static function getArticleById($id)
     {
-        return DB::table('articles')
-            ->select('id', 'title', 'body', 'status')
+        return Article::select('id', 'title', 'body', 'status', 'updated_at')
             ->where('id', $id)
             ->get()
             ->toArray();
