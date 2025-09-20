@@ -1,4 +1,4 @@
-import { getArticle, getMenu, getInfo } from "@/lib/data";
+import { getArticle, getNavMenu, getInfo } from "@/lib/data";
 import Footer from "@/ui/components/footer";
 import Header from "@/ui/components/client-header";
 import SubCard from "@/ui/components/sub-card";
@@ -12,12 +12,12 @@ export default async function Home() {
     const image03 = "/images/bg-damier_01.svg";
     const firtArticle = await getArticle("1");
     const article = await getArticle();
-    const menu = await getMenu();
+    const menuNav = await getNavMenu();
     const hoursInfo = await getInfo();
     return (
         <main className="flex flex-1 flex-col">
-            <Header listMenu={menu} />
-            <section className="flex h-fit flex-col justify-between gap-32 overflow-y-auto py-28 md:flex-row md:items-start md:py-83">
+            <Header listMenu={menuNav} />
+            <section className="flex h-fit flex-col justify-between gap-32 py-28 md:flex-row md:items-start md:py-83">
                 <article className="relative flex h-full max-w-[39rem] min-w-[9rem] flex-col items-center justify-between md:items-start">
                     <Image
                         src={image01}
@@ -40,13 +40,13 @@ export default async function Home() {
                     />
                 </article>
             </section>
-            <section className="relative -mx-48 w-svw h-80 md:h-80 xl:-mx-200">
+            <section className="relative -mx-48 md:h-80 xl:-mx-200 overflow-x-clip">
                 <Image
                     src={image03}
                     alt="Transition image d'un damier"
-                    fill
-                    sizes="100vw"
-                    className="z-10 object-cover"
+                    height={80}
+                    width={1905}
+                    className="z-10 object-cover size-full"
                 />
             </section>
             <section className="relative flex flex-col gap-16 py-48 md:py-83">
@@ -74,11 +74,11 @@ export default async function Home() {
                 </article>
             </section>
             <Footer
-                listMenu={menu}
+                listMenu={menuNav}
                 imageSrc={image01}
                 imageAlt={image01ALT}
                 openHours={hoursInfo}
-            />
+            /> 
         </main>
     );
 }

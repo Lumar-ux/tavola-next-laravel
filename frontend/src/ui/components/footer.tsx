@@ -1,5 +1,9 @@
-import { InfoType, menuType } from "@/lib/definitions";
+"use client";
+
+import clsx from "clsx";
+import { InfoType, menuNavType } from "@/lib/definitions";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function Footer({
     imageSrc,
@@ -9,18 +13,31 @@ export default function Footer({
 }: {
     imageSrc: string;
     imageAlt: string;
-    listMenu: menuType;
+    listMenu: menuNavType;
     openHours: InfoType[];
 }) {
+    const path = usePathname();
+    const condColor = path === "/";
+    const pathLogo = condColor ? imageSrc : "/logo_tavola_colo_02_light.svg";
     const { bottomList } = listMenu;
     return (
-        <footer className="grid h-195 w-full items-center justify-center gap-16">
+        <footer className="grid h-195 w-full flex-none items-center justify-center gap-16">
             <nav className="relative flex h-full">
-                {/* <div className="bg-tavo-light pointer-events-none absolute inset-y-0 left-1/2 -z-1 w-screen -translate-x-1/2" /> */}
-                <ul className="text-tavo-dark grid h-195 w-full grid-cols-12 grid-rows-4 items-end">
+                <div
+                    className={clsx(
+                        "pointer-events-none absolute inset-y-0 left-1/2 -z-1 w-screen -translate-x-1/2",
+                        condColor ? "bg-tavo-light" : "bg-tavo-dark",
+                    )}
+                />
+                <ul
+                    className={clsx(
+                        "grid h-195 w-full grid-cols-12 grid-rows-4 items-end",
+                        condColor ? "text-tavo-dark" : "text-tavo-light",
+                    )}
+                >
                     <li className="col-span-2 row-span-2 md:row-start-2 md:row-end-4">
                         <Image
-                            src={imageSrc}
+                            src={pathLogo}
                             alt={imageAlt}
                             height={73.32}
                             width={239.79}
@@ -31,7 +48,7 @@ export default function Footer({
                             {openHours[0]?.openHours.label}
                         </h3>
                     </li>
-                    <li className="col-span-3 col-start-4 row-start-2 row-end-4 grid gap-4 md:gap-16 grid-cols-6">
+                    <li className="col-span-3 col-start-4 row-start-2 row-end-4 grid grid-cols-6 gap-4 md:gap-16">
                         {openHours.map((item, index) => (
                             <div
                                 key={item.localisation ?? index}
@@ -67,13 +84,21 @@ export default function Footer({
                     ))}
                     <li className="col-start-12 flex justify-end gap-16">
                         <Image
-                            src="./images/Instagram_dark.svg"
+                            src={
+                                condColor
+                                    ? "./images/Instagram_dark.svg"
+                                    : "./images/Instagram_light.svg"
+                            }
                             alt="Logo instagram"
                             height={24}
                             width={24}
                         />
                         <Image
-                            src="./images/Facebook_dark.svg"
+                            src={
+                                condColor
+                                    ? "./images/Facebook_dark.svg"
+                                    : "./images/Facebook_light.svg"
+                            }
                             alt="Logo facebook"
                             height={24}
                             width={24}

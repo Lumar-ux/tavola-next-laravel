@@ -2,13 +2,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { menuType } from "@/lib/definitions";
+import { menuNavType } from "@/lib/definitions";
 
-export default function HeaderClient({ data }: { data: menuType }) {
+export default function HeaderClient({ data }: { data: menuNavType }) {
     const { topList } = data;
     const activePath = usePathname();
     return (
-        <header className="relative h-75 md:h-195">
+        <header className="relative h-75 md:h-195 flex-none">
             <nav className="relative flex h-full items-center justify-between">
                 <div className="bg-tavo-dark pointer-events-none absolute inset-y-0 left-1/2 -z-1 w-screen -translate-x-1/2" />
                 <ul className="text-tavo-light flex gap-16">

@@ -5,13 +5,13 @@ export type userType = {
 };
 
 export type NavItem = {
-  id: number;
-  label: string;
-  value: string;
-  url: string;
+    id: number;
+    label: string;
+    value: string;
+    url: string;
 };
 
-export type menuType = {
+export type menuNavType = {
     topList: NavItem[];
     bottomList: NavItem[];
 };
@@ -38,13 +38,26 @@ export type InfoType = {
         weekDays: {
             days: string;
             hours: string;
-        }
+        };
         weekend: {
             days: string;
             hours: string;
-        }
+        };
     };
     phone: string;
 };
 
+interface normalItem {
+    nom: string;
+    prix: Array<number>;
+    description?: string;
+}
+interface Category {
+  titre: string;
+  items: normalItem[];
+}
 
+export interface menuType {
+  mainTitre: string;
+  categories: Category[];
+}

@@ -5,6 +5,7 @@ use App\Http\Controllers\InfoController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MenuHeaderController;
 use App\Http\Controllers\MenuController;
 use Illuminate\Http\Request;
 
@@ -20,5 +21,6 @@ Route::apiResource('article', ArticleController::class);
 Route::apiResource('user', UserController::class);
 Route::post('/tokens/create', [AuthController::class, 'createToken']);
 
+Route::get('/menu-header', [MenuHeaderController::class, 'index']);
 Route::get('/menu', [MenuController::class, 'index']);
 Route::get('/info', [InfoController::class, 'index']);
