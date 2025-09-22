@@ -1,16 +1,16 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+// import { usePathname } from "next/navigation";
 import { menuNavType } from "@/lib/definitions";
 
 export default function HeaderClient({ data }: { data: menuNavType }) {
     const { topList } = data;
-    const activePath = usePathname();
+    // const activePath = usePathname();
     return (
-        <header className="relative h-75 md:h-195 flex-none">
+        <header className="relative h-75 md:h-195">
+            <div className="bg-tavo-dark pointer-events-none absolute inset-y-0 left-1/2 -z-1 w-screen -translate-x-1/2" />
             <nav className="relative flex h-full items-center justify-between">
-                <div className="bg-tavo-dark pointer-events-none absolute inset-y-0 left-1/2 -z-1 w-screen -translate-x-1/2" />
                 <ul className="text-tavo-light flex gap-16">
                     {topList.map((item) => (
                         <li key={item.id}>

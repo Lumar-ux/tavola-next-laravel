@@ -21,7 +21,7 @@ export default function Footer({
     const pathLogo = condColor ? imageSrc : "/logo_tavola_colo_02_light.svg";
     const { bottomList } = listMenu;
     return (
-        <footer className="grid h-195 w-full flex-none items-center justify-center gap-16">
+        <footer className="grid h-195 w-full items-center justify-center gap-16">
             <nav className="relative flex h-full">
                 <div
                     className={clsx(

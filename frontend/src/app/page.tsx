@@ -50,7 +50,7 @@ export default async function Home() {
                 />
             </section>
             <section className="relative flex flex-col gap-16 py-48 md:py-83">
-                <div className="bg-tavo-dark pointer-events-none absolute inset-y-0 left-1/2 -z-1 w-screen -translate-x-1/2" />
+                <div className="bg-tavo-dark pointer-events-none absolute inset-y-0 left-1/2 -z-2 w-screen -translate-x-1/2" />
                 <h1 className="text-tavo-light text-7xl font-black uppercase">
                     Event/news
                 </h1>
