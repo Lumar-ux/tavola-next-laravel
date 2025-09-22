@@ -24,3 +24,6 @@ Route::post('/tokens/create', [AuthController::class, 'createToken']);
 Route::get('/menu-header', [MenuHeaderController::class, 'index']);
 Route::get('/menu', [MenuController::class, 'index']);
 Route::get('/info', [InfoController::class, 'index']);
+
+Route::apiResource('message', ArticleController::class);
+
