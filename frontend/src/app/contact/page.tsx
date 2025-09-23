@@ -1,10 +1,10 @@
 import { getNavMenu, getInfo } from "@/lib/data";
-import Footer from "@/ui/components/footer";
-import Header from "@/ui/components/client-header";
-import Form from "@/ui/components/form";
+import Footer from "@/components/ui/footer";
+import Header from "@/components/ui/client-header";
+import Form from "@/components/ui/form";
 
 export default async function Page() {
-    const image01 = "/logo_tavola_colo_02_dark.svg";
+    const image01 = "/images/logo_tavola_colo_02_dark.svg";
     const image01ALT = "Logo Tavola";
     const hoursInfo = await getInfo();
     const menuNav = await getNavMenu();

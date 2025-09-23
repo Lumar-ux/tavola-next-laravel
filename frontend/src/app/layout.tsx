@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import "@/ui/globals.css";
-import { HelveticaLTStd } from "@/ui/fonts/fonts";
+import "@/styles/globals.css";
+import { HelveticaLTStd } from "../../public/fonts/fonts";
 
 export const metadata: Metadata = {};
 

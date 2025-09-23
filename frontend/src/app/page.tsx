@@ -1,12 +1,12 @@
 import { getArticle, getNavMenu, getInfo } from "@/lib/data";
-import Footer from "@/ui/components/footer";
-import Header from "@/ui/components/client-header";
-import SubCard from "@/ui/components/sub-card";
-import MainCard from "@/ui/components/main-card";
+import Footer from "@/components/ui/footer";
+import Header from "@/components/ui/client-header";
+import SubCard from "@/components/ui/sub-card";
+import MainCard from "@/components/ui/main-card";
 import Image from "next/image";
 
 export default async function Home() {
-    const image01 = "/logo_tavola_colo_02_dark.svg";
+    const image01 = "/images/logo_tavola_colo_02_dark.svg";
     const image01ALT = "Logo Tavola";
     const image02 = "/images/benu-marinescu_homeimage.jpg";
     const image03 = "/images/bg-damier_01.svg";
@@ -40,13 +40,13 @@ export default async function Home() {
                     />
                 </article>
             </section>
-            <section className="relative -mx-48 md:h-80 xl:-mx-200 overflow-x-clip">
+            <section className="relative -mx-48 overflow-x-clip md:h-80 xl:-mx-200">
                 <Image
                     src={image03}
                     alt="Transition image d'un damier"
                     height={80}
                     width={1905}
-                    className="z-10 object-cover size-full"
+                    className="z-10 size-full object-cover"
                 />
             </section>
             <section className="relative flex flex-col gap-16 py-48 md:py-83">
@@ -78,7 +78,7 @@ export default async function Home() {
                 imageSrc={image01}
                 imageAlt={image01ALT}
                 openHours={hoursInfo}
-            /> 
+            />
         </main>
     );
 }

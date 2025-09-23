@@ -1,10 +1,9 @@
 import { getNavMenu, getInfo, getMenu } from "@/lib/data";
-import Footer from "@/ui/components/footer";
-import Header from "@/ui/components/client-header";
-import { menuType } from "@/lib/definitions";
+import Footer from "@/components/ui/footer";
+import Header from "@/components/ui/client-header";
 
 export default async function Page() {
-    const image01 = "/logo_tavola_colo_02_dark.svg";
+    const image01 = "/images/logo_tavola_colo_02_dark.svg";
     const image01ALT = "Logo Tavola";
     const hoursInfo = await getInfo();
     const menuNav = await getNavMenu();
@@ -29,7 +28,7 @@ export default async function Page() {
                                 {cat.items.map((item, idx) => (
                                     <li
                                         key={idx}
-                                        className="text-tavo-dark flex flex-col mb-8 sm:mb-6 sm:flex-row"
+                                        className="text-tavo-dark mb-8 flex flex-col sm:mb-6 sm:flex-row"
                                     >
                                         <h3 className="inline-block pr-6 text-xs font-bold md:text-sm lg:text-base">
                                             {item.nom}:
