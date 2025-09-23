@@ -1,5 +1,5 @@
 import { CardProps } from "@/lib/definitions";
-import Button from "@/ui/components/button";
+import { Button } from "@/components/ui/button";
 
 export default function MainCard({ title, body, dateUpdate }: CardProps) {
     return (
@@ -20,7 +20,7 @@ export default function MainCard({ title, body, dateUpdate }: CardProps) {
                     {dateUpdate}
                 </p>
             </div>
-            <Button text="Learn More" />
+            <Button>Learn More</Button>
         </div>
     );
 }

@@ -1,15 +1,15 @@
 "use client";
-import { Button } from "@/ui/components/button";
+import { Button } from "@/components/button";
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/ui/components/select";
-import { Input } from "@/ui/components/input";
-import { Label } from "@/ui/components/label";
-import { Textarea } from "@/ui/components/textarea";
+} from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 
 export default function Form() {
