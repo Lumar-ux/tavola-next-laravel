@@ -3,7 +3,7 @@ import Footer from "@/components/ui/footer";
 import Header from "@/components/ui/client-header";
 
 export default async function Page() {
-    const image01 = "/images/logo_tavola_colo_02_dark.svg";
+    const image01 = "/images/logo_tavola_colo_02_light.svg";
     const image01ALT = "Logo Tavola";
     const hoursInfo = await getInfo();
     const menuNav = await getNavMenu();
@@ -64,8 +64,6 @@ export default async function Page() {
             </section>
             <Footer
                 listMenu={menuNav}
-                imageSrc={image01}
-                imageAlt={image01ALT}
                 openHours={hoursInfo}
             />
         </main>

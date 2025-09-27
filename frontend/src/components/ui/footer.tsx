@@ -4,21 +4,21 @@ import clsx from "clsx";
 import { InfoType, menuNavType } from "@/lib/definitions";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import path from "path";
 
 export default function Footer({
-    imageSrc,
-    imageAlt,
+    imageSrc = "/images/logo_tavola_colo_02_light.svg",
+    imageAlt = "Logo Tavola",
+    pathContext = "dark",
     listMenu,
     openHours,
 }: {
-    imageSrc: string;
-    imageAlt: string;
+    imageSrc?: string;
+    imageAlt?: string;
+    pathContext?: "light" | "dark";
     listMenu: menuNavType;
     openHours: InfoType[];
 }) {
-    const path = usePathname();
-    const condColor = path === "/";
-    const pathLogo = condColor ? imageSrc : "/logo_tavola_colo_02_light.svg";
     const { bottomList } = listMenu;
     return (
         <footer className="grid h-195 w-full items-center justify-center gap-16">
@@ -26,18 +26,18 @@ export default function Footer({
                 <div
                     className={clsx(
                         "pointer-events-none absolute inset-y-0 left-1/2 -z-1 w-screen -translate-x-1/2",
-                        condColor ? "bg-tavo-light" : "bg-tavo-dark",
+                        pathContext == "dark" ? "bg-tavo-dark" : "bg-tavo-light",
                     )}
                 />
                 <ul
                     className={clsx(
                         "grid h-195 w-full grid-cols-12 grid-rows-4 items-end",
-                        condColor ? "text-tavo-dark" : "text-tavo-light",
+                        pathContext == "dark" ? "text-tavo-light" : "text-tavo-dark",
                     )}
                 >
                     <li className="col-span-2 row-span-2 md:row-start-2 md:row-end-4">
                         <Image
-                            src={pathLogo}
+                            src={imageSrc}
                             alt={imageAlt}
                             height={73.32}
                             width={239.79}
@@ -85,9 +85,9 @@ export default function Footer({
                     <li className="col-start-12 flex justify-end gap-16">
                         <Image
                             src={
-                                condColor
-                                    ? "./images/Instagram_dark.svg"
-                                    : "./images/Instagram_light.svg"
+                                pathContext == "dark"
+                                    ? "./images/Instagram_light.svg"
+                                    : "./images/Instagram_dark.svg"
                             }
                             alt="Logo instagram"
                             height={24}
@@ -95,9 +95,9 @@ export default function Footer({
                         />
                         <Image
                             src={
-                                condColor
-                                    ? "./images/Facebook_dark.svg"
-                                    : "./images/Facebook_light.svg"
+                                pathContext == "dark"
+                                    ? "./images/Facebook_light.svg"
+                                    : "./images/Facebook_dark.svg"
                             }
                             alt="Logo facebook"
                             height={24}

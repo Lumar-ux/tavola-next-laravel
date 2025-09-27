@@ -4,8 +4,6 @@ import Header from "@/components/ui/client-header";
 import Form from "@/components/ui/form";
 
 export default async function Page() {
-    const image01 = "/images/logo_tavola_colo_02_dark.svg";
-    const image01ALT = "Logo Tavola";
     const hoursInfo = await getInfo();
     const menuNav = await getNavMenu();
     return (
@@ -14,8 +12,6 @@ export default async function Page() {
             <Form />
             <Footer
                 listMenu={menuNav}
-                imageSrc={image01}
-                imageAlt={image01ALT}
                 openHours={hoursInfo}
             />
         </main>
