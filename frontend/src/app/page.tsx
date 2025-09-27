@@ -76,6 +76,7 @@ export default async function Home() {
             <Footer
                 listMenu={menuNav}
                 imageSrc={image01}
+                pathContext="light"
                 imageAlt={image01ALT}
                 openHours={hoursInfo}
             />

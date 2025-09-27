@@ -12,8 +12,6 @@ import {
 } from "@/components/ui/carousel";
 
 export default async function Page() {
-    const image01 = "/images/logo_tavola_colo_02_dark.svg";
-    const image01ALT = "Logo Tavola";
     const hoursInfo = await getInfo();
     const menuNav = await getNavMenu();
     const imageCarousel: Array<string> = [
@@ -34,33 +32,35 @@ export default async function Page() {
                 <h1 className="text-tavo-dark mb-48 inline-block text-7xl font-black uppercase">
                     Galerie
                 </h1>
-                <Carousel className="max-w-8xl h-625 w-full">
-                    <CarouselContent className="h-full">
-                        {imageCarousel.map((urlImage, index) => (
-                            <CarouselItem
-                                key={index}
-                                className="h-full md:basis-1/2 lg:basis-1/3"
-                            >
-                                <div className="h-full p-1">
-                                    <Card className="h-full">
-                                        <CardContent className="h-625 w-472">
-                                            <Image src={urlImage} alt="Image" fill/>
-                                        </CardContent>
-                                    </Card>
-                                </div>
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
-                </Carousel>
+                <article className="w-full flex flex-col items-center">
+                    <Carousel className="relative h-625 max-w-7xl w-full">
+                        <CarouselContent>
+                            {imageCarousel.map((imgUrl, i) => (
+                                <CarouselItem
+                                    key={i}
+                                    className="basis-full pl-4 md:basis-1/2 lg:basis-1/3"
+                                >
+                                    <div className="p-4">
+                                        <Card>
+                                            <CardContent className="relative flex h-625 w-full">
+                                                <Image
+                                                    src={imgUrl}
+                                                    alt={`Image 0${i + 1} de la galerie`}
+                                                    fill
+                                                    className="rounded-xl object-cover"
+                                                />
+                                            </CardContent>
+                                        </Card>
+                                    </div>
+                                </CarouselItem>
+                            ))}
+                        </CarouselContent>
+                        <CarouselPrevious />
+                        <CarouselNext />
+                    </Carousel>
+                </article>
             </section>
-            <Footer
-                listMenu={menuNav}
-                imageSrc={image01}
-                imageAlt={image01ALT}
-                openHours={hoursInfo}
-            />
+            <Footer listMenu={menuNav} openHours={hoursInfo} />
         </main>
     );
 }
