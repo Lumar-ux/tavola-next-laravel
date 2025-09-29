@@ -63,8 +63,8 @@
     --tavo-hover-light: oklch(0.8171 0.0213 91.62);
     --tavo-border: hsl(4.65 79% 57.99999999999999%);
     --tavo-border: oklch(0.6339 0.1935 28.55);
-    --tavo-gray: hsl(0 0% 47%);
-    --tavo-gray: oklch(0.5693 0 0);
+    --tavo-gray: hsl(300 0% 39%);
+    --tavo-gray: oklch(0.4997 0 0);
     --radius: 0.625rem;
     --background: oklch(1 0 0);
     --foreground: oklch(0.145 0 0);

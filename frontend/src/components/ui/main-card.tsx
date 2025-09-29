@@ -15,8 +15,8 @@ export default function MainCard({ title, body, dateUpdate }: CardProps) {
                 <p className="text-normal columns-1 gap-8 text-sm md:columns-2 md:text-base">
                     {body}
                 </p>
-                <hr className="my-10 h-2 bg-neutral-500 md:my-18" />
-                <p className="pb-4 text-xs text-neutral-500 md:pb-0 md:text-sm">
+                <hr className="my-10 h-2 bg-tavo-gray md:my-18" />
+                <p className="pb-4 text-xs text-tavo-gray md:pb-0 md:text-sm">
                     {dateUpdate}
                 </p>
             </div>
