@@ -5,6 +5,7 @@ import { InfoType, menuNavType } from "@/lib/definitions";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import path from "path";
+import Link from "next/link";
 
 export default function Footer({
     imageSrc = "/images/logo_tavola_colo_02_light.svg",
@@ -77,9 +78,9 @@ export default function Footer({
                             key={item.id}
                             className={`row-start-1 row-end-2 text-sm leading-none lg:text-[15px] col-start-${7 + index}`}
                         >
-                            <h3 className="font-bold uppercase">
+                            <Link href={item.url} className="font-bold uppercase">
                                 {item.value}
-                            </h3>
+                            </Link>
                         </li>
                     ))}
                     <li className="col-start-12 flex justify-end gap-16">
