@@ -72,10 +72,10 @@ export default function Footer({
                             </div>
                         ))}
                     </li>
-                    {bottomList.map((item, index, arr) => (
+                    {bottomList.map((item, index) => (
                         <li
                             key={item.id}
-                            className={`row-start-1 row-end-2 text-sm leading-none lg:text-[15px] ${index === 0 ? "col-start-7" : "col-start-8"} ${index === arr.length - 1 ? "col-start-9" : ""}`}
+                            className={`row-start-1 row-end-2 text-sm leading-none lg:text-[15px] col-start-${7 + index}`}
                         >
                             <h3 className="font-bold uppercase">
                                 {item.value}
