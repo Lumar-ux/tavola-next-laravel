@@ -10,18 +10,24 @@ return [
         ],
         [
             'id' => 2,
+            'label' => 'Menu',
+            'value' => 'Menu',
+            'url'   => '/menu'
+        ],
+        [
+            'id' => 3,
             'label' => 'Restaurant',
             'value' => 'Restaurant',
             'url'   => '/restaurant'
         ],
         [
-            'id' => 3,
+            'id' => 4,
             'label' => 'Galerie',
             'value' => 'Galerie',
             'url'   => '/galerie'
         ],
         [
-            'id' => 4,
+            'id' => 5,
             'label' => 'Contact',
             'value' => 'Contact',
             'url'   => '/contact'
@@ -36,12 +42,18 @@ return [
         ],
         [
             'id' => 2,
+            'label' => 'Menu',
+            'value' => 'Menu',
+            'url'   => '/menu'
+        ],
+        [
+            'id' => 3,
             'label' => 'Restaurant',
             'value' => 'Restaurant',
             'url'   => '/restaurant'
         ],
         [
-            'id' => 3,
+            'id' => 4,
             'label' => 'Accessibilité',
             'value' => 'Accessibilité',
             'url'   => '#'
