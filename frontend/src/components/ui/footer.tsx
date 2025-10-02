@@ -21,19 +21,24 @@ export default function Footer({
     openHours: InfoType[];
 }) {
     const { bottomList } = listMenu;
+    const columnStarts = ["col-start-7", "col-start-8", "col-start-9"];
     return (
         <footer className="grid h-195 w-full items-center justify-center gap-16">
             <nav className="relative flex h-full">
                 <div
                     className={clsx(
                         "pointer-events-none absolute inset-y-0 left-1/2 -z-1 w-screen -translate-x-1/2",
-                        pathContext == "dark" ? "bg-tavo-dark" : "bg-tavo-light",
+                        pathContext == "dark"
+                            ? "bg-tavo-dark"
+                            : "bg-tavo-light",
                     )}
                 />
                 <ul
                     className={clsx(
                         "grid h-195 w-full grid-cols-12 grid-rows-4 items-end",
-                        pathContext == "dark" ? "text-tavo-light" : "text-tavo-dark",
+                        pathContext == "dark"
+                            ? "text-tavo-light"
+                            : "text-tavo-dark",
                     )}
                 >
                     <li className="col-span-2 row-span-2 md:row-start-2 md:row-end-4">
@@ -76,9 +81,15 @@ export default function Footer({
                     {bottomList.map((item, index) => (
                         <li
                             key={item.id}
-                            className={`row-start-1 row-end-2 text-sm leading-none lg:text-[15px] col-start-${7 + index}`}
+                            className={clsx(
+                                "row-start-1 row-end-2 text-sm leading-none lg:text-[15px]",
+                                columnStarts[index] ?? "col-start-10",
+                            )}
                         >
-                            <Link href={item.url} className="font-bold uppercase">
+                            <Link
+                                href={item.url}
+                                className="font-bold uppercase"
+                            >
                                 {item.value}
                             </Link>
                         </li>
