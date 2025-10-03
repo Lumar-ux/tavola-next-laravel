@@ -44,7 +44,7 @@ Refonte complète du projet **Restaurant 2.0** avec un stack moderne basé sur *
 
 * **Laravel 12** : Framework PHP moderne pour l’API REST.
 * **Laravel Sanctum** : Authentification sécurisée pour SPA/Frontend.
-* **MySQL/PostgreSQL** : Base de données relationnelle pour stocker les données.
+* **PostgreSQL** : Base de données relationnelle pour stocker les données.
 
 
 ## ⚙️ Installation
