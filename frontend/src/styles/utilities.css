@@ -1,0 +1,6 @@
+@utility stretched-link {
+  /* Using same trick as  on https://getbootstrap.com/docs/4.4/utilities/stretched-link/ */
+  @apply after:pointer-events-auto after:absolute after:inset-0 after:z-[1] after:content-[''];
+  /* debug */
+  /* @apply border-1 border-red after:bg-red/50 hover:after:bg-green/50; */
+}
