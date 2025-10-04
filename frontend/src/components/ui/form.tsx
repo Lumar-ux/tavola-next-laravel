@@ -49,7 +49,7 @@ export default function Form() {
                 className="bg-tavo-dark flex w-full max-w-2xl flex-col gap-24 rounded-xl border-2 p-24 shadow-sm"
             >
                 <h1 className="text-tavo-light text-7xl font-black uppercase">
-                    contact
+                    Contact Us
                 </h1>
                 <div className="flex flex-col gap-24">
                     <div className="grid gap-8">

@@ -28,9 +28,9 @@ return [
         ],
         [
             'id' => 5,
-            'label' => 'Contact',
-            'value' => 'Contact',
-            'url'   => '/contact'
+            'label' => 'Contact Us',
+            'value' => 'Contact Us',
+            'url'   => '/contact-us'
         ],
     ],
     'bottomList' => [
