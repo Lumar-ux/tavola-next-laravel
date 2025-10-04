@@ -1,7 +1,7 @@
 import { getNavMenu, getInfo } from "@/lib/data";
 import Image from "next/image";
 import Footer from "@/components/ui/footer";
-import Header from "@/components/ui/client-header";
+import Header from "@/components/ui/header";
 import { Card, CardContent } from "@/components/ui/card";
 import {
     Carousel,
@@ -32,8 +32,8 @@ export default async function Page() {
                 <h1 className="text-tavo-dark mb-48 inline-block text-7xl font-black uppercase">
                     Galerie
                 </h1>
-                <article className="w-full flex flex-col items-center">
-                    <Carousel className="relative h-625 max-w-7xl w-full">
+                <article className="flex w-full flex-col items-center">
+                    <Carousel className="relative h-625 w-full max-w-7xl">
                         <CarouselContent>
                             {imageCarousel.map((imgUrl, i) => (
                                 <CarouselItem
