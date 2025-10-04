@@ -1,5 +1,4 @@
 import { getNavMenu, getInfo } from "@/lib/data";
-import "leaflet/dist/leaflet.css";
 
 import Footer from "@/components/ui/footer";
 import Header from "@/components/ui/header";
