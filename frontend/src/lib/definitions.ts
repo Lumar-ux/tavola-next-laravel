@@ -44,6 +44,7 @@ export type InfoType = {
             hours: string;
         };
     };
+    srcIframe: string;
     phone: string;
 };
 
