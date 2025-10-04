@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function MainCard({ title, body, dateUpdate }: CardProps) {
     return (
-        <div className="bg-tavo-light flex size-full flex-col items-start justify-between rounded-xl p-28 lg:w-10/12 xl:h-[26.5rem] 2xl:h-[23.875rem]">
+        <article className="relative bg-tavo-light flex size-full flex-col items-start justify-between rounded-xl p-28 lg:w-10/12 xl:h-[26.5rem] 2xl:h-[23.875rem]">
             <div className="focus-within:border-ring focus-within:ring-ring flex flex-col items-start focus-within:ring-[3px] focus-within:outline-none">
                 <h2
                     className={
@@ -21,11 +21,11 @@ export default function MainCard({ title, body, dateUpdate }: CardProps) {
                     {dateUpdate}
                 </p>
             </div>
-            <Button asChild>
-                <Link className="stretched-link" href="/restaurant">
-                    Learn More
+            <Button className="stretched-link" asChild>
+                <Link href="/menu">
+                    Découvrir notre menu
                 </Link>
             </Button>
-        </div>
+        </article>
     );
 }
