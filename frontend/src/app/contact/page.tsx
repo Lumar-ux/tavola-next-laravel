@@ -1,6 +1,6 @@
 import { getNavMenu, getInfo } from "@/lib/data";
 import Footer from "@/components/ui/footer";
-import Header from "@/components/ui/client-header";
+import Header from "@/components/ui/header";
 import Form from "@/components/ui/form";
 
 export default async function Page() {
@@ -10,10 +10,7 @@ export default async function Page() {
         <main className="h-100vh flex flex-1 flex-col">
             <Header listMenu={menuNav} />
             <Form />
-            <Footer
-                listMenu={menuNav}
-                openHours={hoursInfo}
-            />
+            <Footer listMenu={menuNav} openHours={hoursInfo} />
         </main>
     );
 }

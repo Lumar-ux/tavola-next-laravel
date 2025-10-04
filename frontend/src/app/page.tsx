@@ -1,6 +1,6 @@
 import { getArticle, getNavMenu, getInfo } from "@/lib/data";
 import Footer from "@/components/ui/footer";
-import Header from "@/components/ui/client-header";
+import Header from "@/components/ui/header";
 import SubCard from "@/components/ui/sub-card";
 import MainCard from "@/components/ui/main-card";
 import Image from "next/image";
