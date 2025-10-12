@@ -36,7 +36,7 @@ class MessageController extends Controller
             'text' => 'required|string',
         ]);
 
-        $message = Message::create([$validated]);
+        $message = Message::create($validated);
 
         return response()->json($message, 201);
     }
