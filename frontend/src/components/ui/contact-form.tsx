@@ -34,7 +34,7 @@ export default function Form() {
     );
 
     return (
-        <Card className="bg-tavo-dark mx-auto w-full max-w-lg rounded-xl border-2 shadow-sm">
+        <Card className="bg-tavo-dark mx-auto w-full max-w-lg rounded-xl border-2 my-83 shadow-sm">
             <CardHeader>
                 <h1 className="text-tavo-light text-7xl leading-none font-black uppercase">
                     Contact Us
@@ -186,9 +186,7 @@ export default function Form() {
                                 aria-describedby="text-error"
                                 className={clsx(
                                     "bg-tavo-light",
-                                    state?.errors?.text
-                                        ? "border-red-500"
-                                        : "",
+                                    state?.errors?.text ? "border-red-500" : "",
                                 )}
                             />
                             {state?.errors?.text && (

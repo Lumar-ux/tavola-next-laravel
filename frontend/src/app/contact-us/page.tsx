@@ -1,7 +1,7 @@
 import { getNavMenu, getInfo } from "@/lib/data";
 import Footer from "@/components/ui/footer";
 import Header from "@/components/ui/header";
-import Form from "@/components/ui/form";
+import Form from "@/components/ui/contact-form";
 
 export default async function Page() {
     const hoursInfo = await getInfo();
