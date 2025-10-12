@@ -8,77 +8,72 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardFooter,
+    Card,
+    CardContent,
+    CardHeader,
+    CardFooter,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
+// import { useState } from "react";
+import { submitAddress } from "@/app/contact-us/actions";
+import { ActionResponse } from "@/lib/definitions";
+import { useActionState } from "react";
+import clsx from "clsx";
+
+const initialState: ActionResponse = {
+    success: false,
+    message: "",
+};
 
 export default function Form() {
-    const [formData, setFormData] = useState({
-        firstname: "",
-        name: "",
-        email: "",
-        message: "",
-        objet: "",
-        error: "",
-    });
+    const [state, action, isPending] = useActionState(
+        submitAddress,
+        initialState,
+    );
 
-    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-        event.preventDefault();
-
-        try {
-            const res = await fetch("http://127.0.0.1:8000/api/message", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            });
-            if (!res.ok) throw new Error("Failed to submit form");
-            setFormData({
-                ...formData,
-                error: "Message envoyé avec succès",
-            });
-        } catch (err) {
-            setFormData({ ...formData, error: "Échec de l&apos;envoi" });
-        }
-    }
     return (
-        <Card className="w-full max-w-lg mx-auto bg-tavo-dark rounded-xl border-2 shadow-sm">
+        <Card className="bg-tavo-dark mx-auto w-full max-w-lg rounded-xl border-2 shadow-sm">
             <CardHeader>
-                <h1 className="text-tavo-light text-7xl font-black uppercase leading-none">
+                <h1 className="text-tavo-light text-7xl leading-none font-black uppercase">
                     Contact Us
                 </h1>
-                <p className="text-sm text-tavo-light">Please enter your messages below.</p>
+                <p className="text-tavo-light text-sm">
+                    Please enter your messages below.
+                </p>
             </CardHeader>
             <CardContent>
-                <form
-                    onSubmit={handleSubmit}
-                    className="space-y-24"
-                >
+                <form action={action} className="space-y-24" autoComplete="on">
                     <div className="flex flex-col gap-24">
                         <div className="grid gap-8">
-                            <Label htmlFor="firstname" className="text-tavo-light">
+                            <Label
+                                htmlFor="firstname"
+                                className="text-tavo-light"
+                            >
                                 Prénom
                             </Label>
                             <Input
                                 id="firstname"
+                                name="firstname"
                                 type="text"
-                                className="bg-tavo-light"
+                                className={clsx(
+                                    "bg-tavo-light",
+                                    state?.errors?.firstname
+                                        ? "border-red-500"
+                                        : "",
+                                )}
+                                aria-describedby="firstname-error"
                                 placeholder="firstname"
-                                value={formData.firstname}
-                                onChange={(e) =>
-                                    setFormData({
-                                        ...formData,
-                                        firstname: e.target.value,
-                                    })
-                                }
                             />
+                            {state?.errors?.firstname && (
+                                <p
+                                    id="firstname-error"
+                                    className="text-sm text-red-500"
+                                >
+                                    {state.errors.firstname[0]}
+                                </p>
+                            )}
                         </div>
                         <div className="grid gap-8">
                             <Label htmlFor="name" className="text-tavo-light">
@@ -86,17 +81,23 @@ export default function Form() {
                             </Label>
                             <Input
                                 id="name"
+                                name="name"
                                 type="text"
-                                className="bg-tavo-light"
+                                className={clsx(
+                                    "bg-tavo-light",
+                                    state?.errors?.name ? "border-red-500" : "",
+                                )}
                                 placeholder="name"
-                                value={formData.name}
-                                onChange={(e) =>
-                                    setFormData({
-                                        ...formData,
-                                        name: e.target.value,
-                                    })
-                                }
+                                aria-describedby="name-error"
                             />
+                            {state?.errors?.name && (
+                                <p
+                                    id="name-error"
+                                    className="text-sm text-red-500"
+                                >
+                                    {state.errors.name[0]}
+                                </p>
+                            )}
                         </div>
                         <div className="grid gap-8">
                             <Label htmlFor="email" className="text-tavo-light">
@@ -104,29 +105,31 @@ export default function Form() {
                             </Label>
                             <Input
                                 id="email"
-                                className="bg-tavo-light"
+                                name="email"
+                                className={clsx(
+                                    "bg-tavo-light",
+                                    state?.errors?.email
+                                        ? "border-red-500"
+                                        : "",
+                                )}
                                 type="text"
                                 placeholder="email"
-                                value={formData.email}
-                                onChange={(e) =>
-                                    setFormData({
-                                        ...formData,
-                                        email: e.target.value,
-                                    })
-                                }
                             />
+                            {state?.errors?.email && (
+                                <p
+                                    id="email-error"
+                                    className="text-sm text-red-500"
+                                >
+                                    {state.errors.email[0]}
+                                </p>
+                            )}
                         </div>
                         <div className="grid gap-8">
-                            <Select
-                                defaultValue={formData.objet}
-                                onValueChange={(value) =>
-                                    setFormData({
-                                        ...formData,
-                                        objet: value,
-                                    })
-                                }
-                            >
-                                <Label htmlFor="objet" className="text-tavo-light">
+                            <Select name="object">
+                                <Label
+                                    htmlFor="objet"
+                                    className="text-tavo-light"
+                                >
                                     Objet
                                 </Label>
                                 <SelectTrigger className="bg-tavo-light w-full">
@@ -134,11 +137,12 @@ export default function Form() {
                                 </SelectTrigger>
                                 <SelectContent>
                                     <SelectItem value="msg">
-                                        Laisser un message dans le livre d&apos;or
+                                        Laisser un message dans le livre
+                                        d&apos;or
                                     </SelectItem>
                                     <SelectItem value="reservation">
-                                        Demande de réservation (date, heure, nombre
-                                        de personnes)
+                                        Demande de réservation (date, heure,
+                                        nombre de personnes)
                                     </SelectItem>
                                     <SelectItem value="private">
                                         Demande d&apos;informations sur les
@@ -152,8 +156,8 @@ export default function Form() {
                                         allergènes
                                     </SelectItem>
                                     <SelectItem value="opt-vege">
-                                        Demande d&apos;informations sur les options
-                                        végétariennes/véganes
+                                        Demande d&apos;informations sur les
+                                        options végétariennes/véganes
                                     </SelectItem>
                                     <SelectItem value="livraison">
                                         Commande à emporter/livraison
@@ -166,24 +170,47 @@ export default function Form() {
                                     </SelectItem>
                                 </SelectContent>
                             </Select>
+                            {state?.errors?.object && (
+                                <p
+                                    id="state-error"
+                                    className="text-sm text-red-500"
+                                >
+                                    {state.errors.object[0]}
+                                </p>
+                            )}
                             <Textarea
+                                id="text"
+                                name="text"
+                                autoComplete="text"
                                 placeholder="Tapez votre message ici."
-                                className="bg-tavo-light"
-                                value={formData.message}
-                                onChange={(e) =>
-                                    setFormData({
-                                        ...formData,
-                                        message: e.target.value,
-                                    })
-                                }
+                                aria-describedby="text-error"
+                                className={clsx(
+                                    "bg-tavo-light",
+                                    state?.errors?.text
+                                        ? "border-red-500"
+                                        : "",
+                                )}
                             />
+                            {state?.errors?.text && (
+                                <p
+                                    id="zipCode-error"
+                                    className="text-sm text-red-500"
+                                >
+                                    {state.errors.text[0]}
+                                </p>
+                            )}
                         </div>
                     </div>
-                    <CardFooter>
-                        <Button type="submit" variant={"light"} className="w-full">
-                            Envoyer
+                    <CardFooter className={"flex flex-col text-white"}>
+                        <Button
+                            type="submit"
+                            variant={"light"}
+                            className="w-full"
+                            disabled={isPending}
+                        >
+                            {isPending ? "Saving..." : "Submit"}
                         </Button>
-                        {formData.error && <p>{formData.error}</p>}
+                        {state?.message && <p>{state.message}</p>}
                     </CardFooter>
                 </form>
             </CardContent>

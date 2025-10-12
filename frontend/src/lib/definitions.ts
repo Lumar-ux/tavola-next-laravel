@@ -63,4 +63,18 @@ export interface menuType {
   categories: Category[];
 }
 
+export interface AddressFormData {
+  firstname: string;
+  name: string;
+  email: string;
+  object: string;
+  text: string;
+}
 
+export interface ActionResponse {
+  success: boolean;
+  message: string;
+  errors?: {
+    [K in keyof AddressFormData]?: string[];
+  };
+}
