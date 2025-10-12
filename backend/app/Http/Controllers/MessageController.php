@@ -12,7 +12,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Message::getAllMessage());
     }
 
     /**
@@ -46,8 +46,7 @@ class MessageController extends Controller
      */
     public function show(string $id)
     {
-        $message = Message::find($id);
-        return response()->json($message);
+        return response()->json(Message::find($id));
     }
 
     /**
