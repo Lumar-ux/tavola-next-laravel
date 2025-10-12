@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MenuHeaderController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\MessageController;
 use Illuminate\Http\Request;
 
 Route::get('/use', function (Request $request) {
@@ -25,5 +26,5 @@ Route::get('/menu-header', [MenuHeaderController::class, 'index']);
 Route::get('/menu', [MenuController::class, 'index']);
 Route::get('/info', [InfoController::class, 'index']);
 
-Route::apiResource('message', ArticleController::class);
+Route::apiResource('message', MessageController::class);
 
