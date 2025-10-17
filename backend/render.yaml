@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: laravel-backend
+    env: docker
+    plan: starter
+    autoDeploy: true
+    healthCheckPath: /
+    # Commandes post-déploiement en prod
+    postDeployCommand: |
+      php artisan key:generate --force --show >/dev/null 2>&1 || true
+      php artisan migrate --force
+      php artisan storage:link || true
+      php artisan config:cache
+      php artisan route:cache
+      php artisan view:cache
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: APP_URL
+        value: https://tavola.onrender
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DATABASE_URL
+        # Mets la valeur dans l'UI Render, pas ici
+        value: postgresql://postgres:pLHOGATYNLlpiDHo@db.kttwdedrzsljisxbpgiu.supabase.co:5432/postgres
+        sync: false
+      - key: APP_KEY
+        # Mets la valeur dans l'UI Render, pas ici
+        value: base64:5p4GZbHPKPB5equ/P3R+1Vp5gQ+YGvFrR5xmz8REcmA=
+        sync: false
