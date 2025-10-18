@@ -22,14 +22,6 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile
 
-# Copier les sources front
-COPY resources ./resources
-COPY vite.config.* ./
-COPY tsconfig.* ./
-COPY postcss.config.* ./
-COPY tailwind.* ./
-# Si tu as des fichiers supplémentaires nécessaires au build, ajoute-les
-
 # Build Vite en mode production
 RUN pnpm build
 
