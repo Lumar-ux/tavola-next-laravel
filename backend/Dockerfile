@@ -31,9 +31,6 @@ RUN apk add --no-cache \
 # Copier code + vendor depuis l'étape vendor
 COPY --from=vendor /app /var/www/html
 
-# Copier les assets Vite compilés
-COPY --from=assets /app/public/build /var/www/html/public/build
-
 # Permissions Laravel
 RUN chown -R www-data:www-data storage bootstrap/cache \
  && chmod -R 775 storage bootstrap/cache
