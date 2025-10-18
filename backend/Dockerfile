@@ -24,9 +24,10 @@ RUN apk add --no-cache \
       oniguruma-dev \
       libzip-dev \
       libpng-dev libjpeg-turbo-dev freetype-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) \
-         pdo pdo_pgsql intl gd zip bcmath opcache
+      postgresql-dev postgresql-libs \
+      $PHPIZE_DEPS build-base pkgconfig \
+  && docker-php-ext-configure gd --with-freetype --with-jpeg \
+  && docker-php-ext-install -j$(nproc) pdo pdo_pgsql intl gd zip bcmath opcache
 
 # Copier code + vendor depuis l'étape vendor
 COPY --from=vendor /app /var/www/html
