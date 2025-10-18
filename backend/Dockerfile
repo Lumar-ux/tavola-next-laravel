@@ -11,21 +11,7 @@ COPY . .
 RUN composer install --no-dev --no-interaction --prefer-dist --no-progress
 # Évite d'exécuter des commandes artisan ici car APP_KEY n'est pas dispo en build
 
-# -------- Etape 2: Build front Vite avec pnpm --------
-FROM node:20-alpine AS assets
-WORKDIR /app
-
-# Activer pnpm via corepack
-RUN corepack enable && corepack prepare pnpm@latest --activate
-
-# Copier uniquement ce qui est nécessaire pour le lockfile
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
-
-# Build Vite en mode production
-RUN pnpm build
-
-# -------- Etape 3: Runtime PHP-FPM + Caddy --------
+# -------- Etape 2: Runtime PHP-FPM + Caddy --------
 FROM php:8.3-fpm-alpine
 
 WORKDIR /var/www/html
