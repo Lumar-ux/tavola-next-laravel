@@ -9,12 +9,20 @@ services:
     healthCheckPath: /
     # Commandes post-déploiement en prod
     postDeployCommand: |
+      mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views
+      mkdir -p bootstrap/cache
+      chown -R www-data:www-data storage bootstrap/cache
+      chmod -R 775 storage bootstrap/cache
       php artisan config:clear
       php artisan migrate --force
       php artisan storage:link || true
       php artisan config:cache
       php artisan route:cache
       php artisan view:cache
+    disk:
+      name: storage
+      mountPath: /var/www/html/storage
+      sizeGB: 5
     envVars:
       - key: APP_ENV
         value: production
