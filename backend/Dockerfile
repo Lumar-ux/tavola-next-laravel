@@ -38,13 +38,11 @@ RUN chown -R www-data:www-data storage bootstrap/cache \
 
 # Caddyfile minimal
 COPY <<'CADDY' /etc/caddy/Caddyfile
-admin off
-:{$PORT:-8080}{
-  encode zstd gzip
-  root * /var/www/html/public
-  php_fastcgi 127.0.0.1:9000
-  file_server
-}
+:{$PORT:-8080}
+encode zstd gzip
+root * /var/www/html/public
+php_fastcgi 127.0.0.1:9000
+file_server
 CADDY
 
 # Exposer le port attendu par Render
