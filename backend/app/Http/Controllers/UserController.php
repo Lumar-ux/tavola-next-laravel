@@ -26,9 +26,7 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|max:255|email:rfc,dns|unique:users,email',
-            'password' => 'required|string|min:8|confirmed|Rules\Password::defaults()',
-            'status' => 'required|string|in:draft,published,archived',
-            'edition' => 'required|boolean',
+            'password' => 'required|string|min:8|confirmed',
         ]);
         $validated['password'] = Hash::make($validated['password']);
         $user = User::create($validated);
@@ -49,8 +47,6 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|max:255|email:rfc,dns',
             'password' => 'required|string|min:8|confirmed',
-            'status' => 'required|string|in:draft,published,archived',
-            'edition' => 'required|boolean:strict',
         ]);
         $user->update($validated);
         return response()->json($user, 200);
