@@ -18,16 +18,15 @@ WORKDIR /var/www/html
 
 # Dépendances système et extensions PHP
 RUN apk add --no-cache \
-      caddy \
-      bash \
-      icu-dev \
-      oniguruma-dev \
-      libzip-dev \
+      caddy bash icu-dev oniguruma-dev libzip-dev \
       libpng-dev libjpeg-turbo-dev freetype-dev \
       postgresql-dev postgresql-libs \
       $PHPIZE_DEPS build-base pkgconfig \
   && docker-php-ext-configure gd --with-freetype --with-jpeg \
-  && docker-php-ext-install -j$(nproc) pdo pdo_pgsql intl gd zip bcmath opcache
+  && docker-php-ext-install -j$(nproc) pdo pdo_pgsql intl gd zip bcmath opcache mbstring
+
+# Logs PHP sur stderr pour les voir dans Render
+RUN { echo 'log_errors=On'; echo 'error_log=/proc/self/fd/2'; } > /usr/local/etc/php/conf.d/log.ini
 
 # Copier code + vendor depuis l'étape vendor
 COPY --from=vendor /app /var/www/html
@@ -38,11 +37,16 @@ RUN chown -R www-data:www-data storage bootstrap/cache \
 
 # Caddyfile minimal
 COPY <<'CADDY' /etc/caddy/Caddyfile
-:{$PORT:-8080}
-encode zstd gzip
-root * /var/www/html/public
-php_fastcgi 127.0.0.1:9000
-file_server
+{
+  admin off
+}
+
+:{$PORT:-8080} {
+  encode zstd gzip
+  root * /var/www/html/public
+  php_fastcgi 127.0.0.1:9000
+  file_server
+}
 CADDY
 
 # Exposer le port attendu par Render
