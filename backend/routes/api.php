@@ -28,3 +28,5 @@ Route::get('/info', [InfoController::class, 'index']);
 
 Route::apiResource('message', MessageController::class);
 
+Route::get('/ping', fn () => response()->json(['pong' => true]));
+
