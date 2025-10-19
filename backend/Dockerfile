@@ -38,6 +38,7 @@ RUN chown -R www-data:www-data storage bootstrap/cache \
 
 # Caddyfile minimal
 COPY <<'CADDY' /etc/caddy/Caddyfile
+admin off
 :{$PORT:-8080}
 encode zstd gzip
 root * /var/www/html/public
