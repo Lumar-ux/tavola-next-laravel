@@ -50,7 +50,7 @@ class User extends Authenticatable
     {
         return User::select('id', 'name')
             ->where('id', $id)
-            ->get();
+            ->first();
     }
     protected function casts(): array
     {
