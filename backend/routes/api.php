@@ -9,7 +9,6 @@ use App\Http\Controllers\MenuHeaderController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MessageController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 Route::get('/use', function (Request $request) {
     return $request->user();
@@ -30,12 +29,3 @@ Route::get('/info', [InfoController::class, 'index']);
 Route::apiResource('message', MessageController::class);
 
 Route::get('/ping', fn () => response()->json(['pong' => true]));
-
-Route::get('/db-check', function () {
-    try {
-        $ok = DB::select('select 1 as ok');
-        return response()->json(['db' => 'ok', 'result' => $ok]);
-    } catch (\Throwable $e) {
-        return response()->json(['db' => 'fail', 'error' => $e->getMessage()], 500);
-    }
-});
