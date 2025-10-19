@@ -39,8 +39,10 @@ RUN { \
 COPY --from=vendor /app /var/www/html
 
 # Permissions Laravel
-RUN chown -R www-data:www-data storage bootstrap/cache \
- && chmod -R 775 storage bootstrap/cache
+RUN mkdir -p storage/framework/{cache,sessions,views} \
+    && mkdir -p bootstrap/cache \
+    && chown -R www-data:www-data storage bootstrap/cache \
+    && chmod -R 775 storage bootstrap/cache
 
 # Caddyfile minimal
 COPY <<'CADDY' /etc/caddy/Caddyfile
