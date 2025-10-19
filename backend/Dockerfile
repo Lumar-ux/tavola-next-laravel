@@ -29,6 +29,8 @@ RUN apk add --no-cache \
   && docker-php-ext-configure gd --with-freetype --with-jpeg \
   && docker-php-ext-install -j"$(nproc)" pdo pdo_pgsql intl gd zip bcmath opcache mbstring
 
+RUN sed -ri 's|^listen = .*|listen = 9000|g' /usr/local/etc/php-fpm.d/zz-docker.conf || true
+
 # Logs PHP sur stderr pour les voir dans Render
 RUN { \
       echo 'log_errors=On'; \
@@ -61,5 +63,9 @@ CADDY
 # Exposer le port attendu par Render
 EXPOSE 8080
 
-# Lancer PHP-FPM puis Caddy au démarrage
-CMD php-fpm -D && caddy run --config /etc/caddy/Caddyfile --adapter caddyfile
+# Copier le start script
+COPY start.sh /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/start.sh
+
+# Remplacer la commande de démarrage
+CMD ["/usr/local/bin/start.sh"]
