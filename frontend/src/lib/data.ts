@@ -1,8 +1,10 @@
 import { articleType, InfoType, menuNavType, userType, menuType } from "@/lib/definitions";
 
+const API_BASE_URL = process.env.API_BASE_URL
+
 export async function getUser(): Promise<userType[]> {
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/user", {
+        const response = await fetch(`${API_BASE_URL}/api/user`, {
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
@@ -20,7 +22,7 @@ export async function getUser(): Promise<userType[]> {
 
 export async function getArticle(id: string = ""): Promise<articleType[]> {
     try {
-        const response = await fetch(`http://127.0.0.1:8000/api/article/${id}`, {
+        const response = await fetch(`${API_BASE_URL}/api/article/${id}`, {
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
@@ -38,7 +40,7 @@ export async function getArticle(id: string = ""): Promise<articleType[]> {
 
 export async function getNavMenu(): Promise<menuNavType> {
     try {
-        const response = await fetch(`http://127.0.0.1:8000/api/menu-header`, {
+        const response = await fetch(`${API_BASE_URL}/api/menu-header`, {
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
@@ -56,7 +58,7 @@ export async function getNavMenu(): Promise<menuNavType> {
 
 export async function getInfo(): Promise<InfoType[]> {
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/info", {
+        const response = await fetch(`${API_BASE_URL}/api/info`, {
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
@@ -74,7 +76,7 @@ export async function getInfo(): Promise<InfoType[]> {
 
 export async function getMenu(): Promise<menuType> {
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/menu", {
+        const response = await fetch(`${API_BASE_URL}/api/menu`, {
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
