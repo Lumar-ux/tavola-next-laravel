@@ -34,9 +34,7 @@ export default async function Page() {
                             <iframe
                                 src={Item.srcIframe}
                                 className="h-500 w-full rounded-lg border-0 lg:w-1000"
-                                allowfullscreen=""
                                 loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"
                             />
                         </div>
                     </article>
