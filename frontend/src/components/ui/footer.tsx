@@ -3,8 +3,6 @@
 import clsx from "clsx";
 import { InfoType, menuNavType } from "@/lib/definitions";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import path from "path";
 import Link from "next/link";
 
 export default function Footer({

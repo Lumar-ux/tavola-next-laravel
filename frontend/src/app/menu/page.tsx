@@ -3,8 +3,6 @@ import Footer from "@/components/ui/footer";
 import Header from "@/components/ui/header";
 
 export default async function Page() {
-    const image01 = "/images/logo_tavola_colo_02_light.svg";
-    const image01ALT = "Logo Tavola";
     const hoursInfo = await getInfo();
     const menuNav = await getNavMenu();
     const menu = await getMenu();
