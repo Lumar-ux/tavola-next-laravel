@@ -67,7 +67,7 @@ export async function submitAddress(
   } catch (error) {
     return {
       success: false,
-      message: "An unexpected error occurred",
+      message: `An unexpected ${error} occurred`,
     };
   }
 }
@@ -80,7 +80,7 @@ function getString(value: FormDataEntryValue | null): string {
   return "";
 }
 
-async function readJson(response: Response): Promise<any | null> {
+async function readJson(response: Response) {
   try {
     return await response.json();
   } catch {
