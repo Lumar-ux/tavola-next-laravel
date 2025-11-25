@@ -1,5 +1,8 @@
 # tavola-next-laravel 🍽️
 
+🔗 **Live Demo**  
+https://tavola-app.vercel.app/
+
 Refonte complète du projet **Restaurant 2.0** avec un stack moderne basé sur **Next.js** pour le frontend et **Laravel** pour l’API backend. Ce projet met l’accent sur la performance, la sécurité et l’expérience utilisateur avec un design réactif et dynamique.
 
 ***Note : Ce projet est actuellement en phase de développement.***
